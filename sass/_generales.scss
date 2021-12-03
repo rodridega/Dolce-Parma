@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: walburn;
+}
+a{
+  text-decoration: none ;
+  color: $color1 !important;
+}
+a:hover{
+  color: $color3 !important;
+}
+header {
+  nav {
+    background-color: $color2;
+    color: $color2;
+    font-size: 30px;
+    div{
+        div{
+            justify-content: flex-end;
+        }
+    }
+  }
+}
+.seccion1{
+  background-color: $color1;
+  text-align: center;
+  height: 50rem;
+}
+.logo{
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.cards{
+  min-height: 60rem;
+  background-color: $color3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
