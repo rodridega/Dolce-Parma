@@ -29,11 +29,10 @@ header {
   height: 50rem;
 }
 .logo{
-    height: 60%;
+    height: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
 .cards{
   min-height: 60rem;
@@ -43,4 +42,15 @@ header {
   align-items: center;
 }
 
-
+.card{
+  margin: 1rem 0rem;
+  p{
+    font-size: 15px;
+  }
+}
+.sobreMi{
+  background-color: $color1;
+  p{
+    text-align: center;
+  }
+}
