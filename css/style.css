@@ -77,8 +77,15 @@ header nav div div {
   margin: 1rem 0rem;
 }
 
-.card p {
+.card h5 {
   font-size: 15px;
+  text-align: center;
+}
+
+.card p {
+  font-size: 12px;
+  text-align: center;
+  padding: 0px;
 }
 
 .sobreMi {

@@ -50,8 +50,14 @@ header {
 
 .card {
   margin: 1rem 0rem;
-  p {
+  h5{
     font-size: 15px;
+    text-align: center;
+  }
+  p {
+    font-size: 12px;
+    text-align: center;
+    padding: 0px;
   }
 }
 .sobreMi {
