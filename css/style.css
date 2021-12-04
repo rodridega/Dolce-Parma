@@ -52,9 +52,16 @@ header nav div div {
           align-items: center;
 }
 
-.cards {
-  min-height: 60rem;
+.productos {
   background-color: #C1EAE3;
+}
+
+.productos h2 {
+  font-size: 30px;
+  padding: 1rem;
+}
+
+.cards {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -80,6 +87,21 @@ header nav div div {
 
 .sobreMi p {
   text-align: center;
+}
+
+.sobreMi h2 {
+  padding: 1rem;
+  font-size: 30px;
+}
+
+.sobreMi p {
+  font-size: 17px;
+  padding: 2rem;
+  margin-bottom: 0;
+}
+
+footer {
+  background-color: #61577F;
 }
 
 @font-face {

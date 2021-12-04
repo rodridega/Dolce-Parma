@@ -4,11 +4,11 @@
   box-sizing: border-box;
   font-family: walburn;
 }
-a{
-  text-decoration: none ;
+a {
+  text-decoration: none;
   color: $color1 !important;
 }
-a:hover{
+a:hover {
   color: $color3 !important;
 }
 header {
@@ -16,41 +16,61 @@ header {
     background-color: $color2;
     color: $color2;
     font-size: 30px;
-    div{
-        div{
-            justify-content: flex-end;
-        }
+    div {
+      div {
+        justify-content: flex-end;
+      }
     }
   }
 }
-.seccion1{
+.seccion1 {
   background-color: $color1;
   text-align: center;
   height: 50rem;
 }
-.logo{
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.logo {
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.cards{
-  min-height: 60rem;
+.productos {
   background-color: $color3;
+  h2{
+    font-size: 30px;
+    padding: 1rem;
+  }
+  
+}
+.cards {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.card{
+.card {
   margin: 1rem 0rem;
-  p{
+  p {
     font-size: 15px;
   }
 }
-.sobreMi{
+.sobreMi {
   background-color: $color1;
-  p{
+  p {
     text-align: center;
   }
+}
+.sobreMi{
+  h2{
+    padding: 1rem;
+    font-size: 30px;
+  }
+  p{
+    font-size: 17px;
+    padding: 2rem;
+    margin-bottom: 0;
+  }
+}
+footer{
+  background-color: $color2;
 }
