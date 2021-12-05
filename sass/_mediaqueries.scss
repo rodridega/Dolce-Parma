@@ -1,8 +1,14 @@
+
 @media only screen and (min-width: 768px) {
     .seccion1{
-        p{
-            font-size: 20px;
-        }
+        min-height: 40rem;
+    }
+    
+}
+
+@media only screen and (min-width: 1024px) {
+    .seccion1{
+        min-height: 60rem;
     }
     
 }

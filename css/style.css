@@ -1,6 +1,12 @@
 @media only screen and (min-width: 768px) {
-  .seccion1 p {
-    font-size: 20px;
+  .seccion1 {
+    min-height: 40rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .seccion1 {
+    min-height: 60rem;
   }
 }
 
@@ -9,21 +15,20 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: walburn;
 }
 
 a {
   text-decoration: none;
-  color: #FDEDF7 !important;
 }
 
 a:hover {
-  color: #C1EAE3 !important;
+  color: #390164 !important;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 header nav {
-  background-color: #61577F;
-  color: #61577F;
+  background-color: #FDEDF7;
   font-size: 30px;
 }
 
@@ -34,22 +39,11 @@ header nav div div {
 }
 
 .seccion1 {
-  background-color: #FDEDF7;
-  text-align: center;
-  height: 50rem;
-}
-
-.logo {
-  height: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  background-image: url(../imagenes/logo2.jpeg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  height: 20rem;
 }
 
 .productos {
@@ -109,10 +103,5 @@ header nav div div {
 
 footer {
   background-color: #61577F;
-}
-
-@font-face {
-  font-family: walburn;
-  src: url(../fuente/WalburnBoldItalic.ttf);
 }
 /*# sourceMappingURL=style.css.map */
