@@ -67,6 +67,7 @@ function cuotas(){
     }
 }
 
-saludar();
+window.onload = saludar();
+
 
 
