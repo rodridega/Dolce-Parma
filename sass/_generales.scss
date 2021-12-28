@@ -21,13 +21,17 @@ header {
     }
   }
 }
-.seccion1 {
+#logoMaquina{
+  width: 100%;
+  height: auto;
+}
+/*.seccion1 {
   background-image: url(../imagenes/logo2.jpeg);
   background-repeat:no-repeat;
   background-size: 100% ;
   background-position: center;
   height: 20rem;
-}
+}*/
 
 .productos {
   background-color: $color3;
