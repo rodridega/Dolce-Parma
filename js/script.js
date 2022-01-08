@@ -9,15 +9,23 @@ class Producto {
   }
 }
 
+const arrayProductos = [];
 const producto1 = new Producto("Cartuchera", 450, 3);
 const producto2 = new Producto("Bolso", 1500, 2);
 const producto3 = new Producto("Portacosmeticos", 720, 4);
+arrayProductos.push(new Producto("Cartuchera", 450, 3),new Producto("Bolso", 1500, 2),new Producto("Portacosmeticos", 720, 4));
 let nada = "Nada, solo quiero mirar";
 let elije1 = 0;
 let elije2 = 0;
 let descuento = 0;
 let cuota = "";
+let superOfer = ""
+let oferton = [];
 
+
+/*FUNCIONES */ 
+
+// Saluda al usuario e inicializa la compra
 function saludar() {
   let nombre = prompt("Hola! Como es tu nombre?");
   alert(
@@ -27,6 +35,8 @@ function saludar() {
   );
   compra();
 }
+
+//Da e elegir los productos al usuario y pregunta por descuentos 
 
 function compra() {
   let elije1 = prompt(
@@ -53,35 +63,42 @@ function compra() {
   } else {
     return alert("No hay problema =D! Para comprar algo apreta F5");
   }
+  
   if (elije2 == 1) {
     elije2 = producto1.precio;
     producto1.mostrarInfo();
-    rebaja(elije1, elije2);
-    cuotas();
   } else if (elije2 == 2) {
     elije2 = producto2.precio;
-    producto2.mostrarInfo();
-    rebaja(elije1, elije2);
-    cuotas();
+    producto2.mostrarInfo();    
   } else if (elije2 == 3) {
     elije2 = producto3.precio;
     producto3.mostrarInfo();
-    rebaja(elije1, elije2);
-    cuotas();
   } else {
     return alert(
       `Perfecto, serian $${elije1} al contado! Gracias por tu compra!`
-    );
+    )
   }
+
+  //Pregunta por la superoferta
+  superOfer = prompt("Si elegis el ultimo producto, pagarias los 3 con un 40% de descuento! Que estas esperando?!\n Si/No ");
+  if (superOfer.toLowerCase() === "si" ) {
+    return superOferta()
+  } else if(superOfer.toLowerCase() === "no") {
+    return rebaja(elije1, elije2),cuotas(); 
+  }
+  
 }
+
+// Aplica un descuento del 15% al comprar 2 productos
 function rebaja(x, y) {
   descuento = parseInt((x + y) * 0.85);
   alert(
-    `Comprando estos dos productos abonarias $${descuento} aplicando el descuento!`
+    `Comprando estos dos productos abonarias $${descuento} aplicando el 15% de descuento!`
   );
   return descuento;
 }
 
+//Preguna al usuario si quiere pagar en cuotas
 function cuotas() {
   cuota = prompt(
     "Deseas pagarlo con tarjeta en 6 comodas cuotas sin intereses?\n Si/No"
@@ -94,6 +111,15 @@ function cuotas() {
       `Perfecto, abonarias $${descuento} al contado. Gracias por tu compra!`
     );
   }
+}
+//Aplica 40% de descuento y suma el valor de los 3 precios.
+function superOferta(){
+  oferton = arrayProductos.map(prod => prod.precio * 0.6)
+  let ofertonTotal = 0;
+  for (let i = 0; i < oferton.length; i++) {
+       ofertonTotal += oferton[i];
+  }
+  return alert(`FELICITACIONES! Acabas de comprar los 3 productos a tan solo $${ofertonTotal}!!!\n Vuelve cuando quieras! `)
 }
 
 window.onload = saludar();
