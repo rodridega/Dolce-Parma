@@ -29,7 +29,7 @@ let oferton = [];
 function saludar() {
   let nombre = prompt("Hola! Como es tu nombre?");
   alert(
-    `Buen dia ${
+    `Buen día ${
       nombre || ""
     }, Bienvenido a Dolce Parma! Estos son nuestros productos!`
   );
@@ -122,4 +122,17 @@ function superOferta(){
   return alert(`FELICITACIONES! Acabas de comprar los 3 productos a tan solo $${ofertonTotal}!!!\n Vuelve cuando quieras! `)
 }
 
-window.onload = saludar();
+//Ordena los productos de menor a mayor precio.
+arrayProductos.sort(function (a, b) {
+  if (a.precio > b.precio) {
+    return 1;
+  }
+  if (a.precio < b.precio) {
+    return -1;
+  }
+  return 0;
+});
+console.log(arrayProductos)
+
+
+/* window.onload = saludar(); */
