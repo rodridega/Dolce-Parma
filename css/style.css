@@ -38,18 +38,13 @@ header nav div div {
           justify-content: flex-end;
 }
 
-#logoMaquina {
-  width: 100%;
-  height: auto;
-}
-
-/*.seccion1 {
+.seccion1 {
   background-image: url(../imagenes/logo2.jpeg);
-  background-repeat:no-repeat;
-  background-size: 100% ;
+  background-size: 100%;
   background-position: center;
   height: 20rem;
-}*/
+}
+
 .productos {
   background-color: #C1EAE3;
 }
