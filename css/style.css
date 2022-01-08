@@ -42,6 +42,7 @@ header nav div div {
   background-image: url(../imagenes/logo2.jpeg);
   background-size: 100%;
   background-position: center;
+  background-repeat: no-repeat;
   height: 20rem;
 }
 

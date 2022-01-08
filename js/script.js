@@ -135,4 +135,4 @@ arrayProductos.sort(function (a, b) {
 console.log(arrayProductos)
 
 
-/* window.onload = saludar(); */
+window.onload = saludar(); 
