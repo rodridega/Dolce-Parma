@@ -1,6 +1,7 @@
 class Producto {
-  constructor(nombre, precio, stock) {
+  constructor(nombre, imagen, precio, stock) {
     this.nombre = nombre;
+    this.imagen = imagen
     this.precio = precio;
     this.stock = stock;
   }
@@ -11,9 +12,9 @@ class Producto {
 
 const productos = [];
 productos.push(
-  new Producto("Cartuchera", 450, 3),
-  new Producto("Bolso", 1500, 2),
-  new Producto("Portacosmeticos", 720, 4)
+  new Producto("Cartuchera","imagenes/producto (1).jpeg", 450, 3),
+  new Producto("Bolso","imagenes/producto (2).jpeg", 1500, 2),
+  new Producto("Portacosmeticos","imagenes/producto (3).jpeg", 720, 4)
 );
 const prodElegidos = [];
 let elije1 = 0;
@@ -22,6 +23,7 @@ let descuento = 0;
 let cuota = "";
 let superOfer = "";
 let oferton = [];
+
 
 /*FUNCIONES */
 
@@ -127,4 +129,32 @@ productos.sort(function (a, b) {
   return 0;
 });
 
-window.onload = saludar();
+function dibujarCard(producto){
+  const divCard = document.getElementById('cards');
+  const colCard = document.createElement('div');
+  colCard.className = "col";
+  divCard.appendChild(colCard);
+  const divCard2 = document.createElement('div')
+  divCard2.className = 'card';
+  colCard.appendChild(divCard2)
+  const cardImg = document.createElement('img');
+  cardImg.setAttribute("src", producto.imagen)
+  cardImg.setAttribute("alt", "producto")
+  divCard2.appendChild(cardImg);
+  const bodyDiv = document.createElement('div');
+  bodyDiv.className = 'card-body'
+  divCard2.appendChild(bodyDiv);
+  const cardTitle = document.createElement('h5');
+  cardTitle.innerText = producto.nombre;
+  bodyDiv.appendChild(cardTitle);
+  const cardText = document.createElement('p');
+  cardText.innerText = producto.precio;
+  bodyDiv.appendChild(cardText);
+}
+
+
+for (let i = 0; i < productos.length; i++) {
+  dibujarCard(productos[i])
+}
+
+// window.onload = saludar();
