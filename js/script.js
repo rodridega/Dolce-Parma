@@ -147,11 +147,44 @@ function dibujarCard(producto){
   const cardTitle = document.createElement('h5');
   cardTitle.innerText = producto.nombre;
   bodyDiv.appendChild(cardTitle);
-  const cardText = document.createElement('p');
-  cardText.innerText = producto.precio;
-  bodyDiv.appendChild(cardText);
+  const stock = document.createElement('p');
+  stock.innerText = `Stock: ${producto.stock}`;
+  stock.setAttribute('id', 'stock')
+  bodyDiv.appendChild(stock)
+  const cardPrecio = document.createElement('p');
+  cardPrecio.innerText = `$ ${producto.precio}`
+  cardPrecio.setAttribute('id','precio')
+  bodyDiv.appendChild(cardPrecio);
+  const btnCompra = document.createElement('button');
+  btnCompra.innerText = 'Agregar al Carrito'
+  btnCompra.className = 'btn btn-primary col-12'
+  btnCompra.setAttribute('data-bs-target', '#exampleModal')
+  btnCompra.setAttribute('data-bs-toggle', 'modal')
+  btnCompra.addEventListener("click", mostrarModal);
+  bodyDiv.appendChild(btnCompra)
+
 }
 
+function mostrarModal(e){
+  const cardElejida = e.target.parentElement.parentElement;
+  const modal = document.getElementById('myModal');
+
+  
+
+
+  const infoCard = {
+    nombre: cardElejida.querySelector('h5').textContent,
+    imagen: cardElejida.querySelector('img').src,
+    stock: cardElejida.querySelector('#stock').textContent,
+    precio: cardElejida.querySelector('#precio').textContent
+  }
+
+  modal.firstElementChild.setAttribute('src',cardElejida.querySelector('img').src)
+  modal.children[1].children[0].innerHTML = cardElejida.querySelector('h5').textContent;
+  modal.children[1].children[1].children[0].innerHTML = cardElejida.querySelector('#precio').textContent
+  modal.children[1].children[1].children[1].innerHTML = cardElejida.querySelector('#stock').textContent
+  console.log(infoCard)
+}
 
 for (let i = 0; i < productos.length; i++) {
   dibujarCard(productos[i])

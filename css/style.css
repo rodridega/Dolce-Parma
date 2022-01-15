@@ -82,6 +82,11 @@ header nav div div {
   padding: 0px;
 }
 
+.card:hover {
+  background-color: #dddcdc;
+  cursor: pointer;
+}
+
 .sobreMi {
   background-color: #FDEDF7;
 }
