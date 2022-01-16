@@ -1,7 +1,7 @@
 class Producto {
   constructor(nombre, imagen, precio, stock) {
     this.nombre = nombre;
-    this.imagen = imagen
+    this.imagen = imagen;
     this.precio = precio;
     this.stock = stock;
   }
@@ -12,9 +12,9 @@ class Producto {
 
 const productos = [];
 productos.push(
-  new Producto("Cartuchera","imagenes/producto (1).jpeg", 450, 3),
-  new Producto("Bolso","imagenes/producto (2).jpeg", 1500, 2),
-  new Producto("Portacosmeticos","imagenes/producto (3).jpeg", 720, 4)
+  new Producto("Cartuchera", "imagenes/producto (1).jpeg", 450, 3),
+  new Producto("Bolso", "imagenes/producto (2).jpeg", 1500, 2),
+  new Producto("Portacosmeticos", "imagenes/producto (3).jpeg", 720, 4)
 );
 const prodElegidos = [];
 let elije1 = 0;
@@ -23,7 +23,7 @@ let descuento = 0;
 let cuota = "";
 let superOfer = "";
 let oferton = [];
-
+console.log(productos);
 
 /*FUNCIONES */
 
@@ -38,40 +38,74 @@ function saludar() {
   compra();
 }
 
-function eleccion(inicioMsj, finMsj){
+function eleccion(inicioMsj, finMsj) {
   let textoInicio = inicioMsj;
-  let textoFin = finMsj
+  let textoFin = finMsj;
   for (let i = 0; i < productos.length; i++) {
-    const elegido = prodElegidos.find(p => p.nombre === productos[i].nombre)
+    const elegido = prodElegidos.find((p) => p.nombre === productos[i].nombre);
     if (elegido) {
-        continue
-    }else {
-      textoInicio += `${productos[i].nombre}: $${productos[i].precio} / Presiona ${i + 1}\n`
+      continue;
+    } else {
+      textoInicio += `${productos[i].nombre}: $${
+        productos[i].precio
+      }\n`;
     }
   }
-  return textoInicio += textoFin;
+  return (textoInicio += textoFin);
 }
 
 //Da e elegir los productos al usuario y pregunta por descuentos
 
 function compra() {
-  let elije1 = prompt(eleccion(`Elije el numero del producto que vas a comprar!\n`, "Nada solo quiero mirar / Cualquier tecla"));
-  if (elije1 > 0) {
-    const elegido = productos[elije1 - 1]
-    prodElegidos.push(elegido);
-    elegido.mostrarInfo();
-    elije2 = prompt(eleccion(`Elije otro producto para aprovechar un INCREIBLE DESCUENTO del 15% en 6 cuotas SIN INTERESES!!!\n`, "No quiero nada mas, gracias! / Cualquier tecla")) 
-  } else {
-    return alert("No hay problema =D! Para comprar algo apreta F5");
-  } 
+  const elije1 = prompt(
+    eleccion(
+      `Escribe el producto que quieres comprar!\n`,
+      "Nada solo quiero mirar / Cualquier tecla"
+    )
+  );
+  switch (elije1.toLowerCase()) {
+    case "cartuchera":
+      prodElegidos.push(productos[0]);
+      productos[0].mostrarInfo();
+      break;
+    case "portacosmeticos":
+      prodElegidos.push(productos[1]);
+      productos[1].mostrarInfo();
+      break;
+    case "bolso":
+      prodElegidos.push(productos[2]);
+      productos[2].mostrarInfo();
+      break;
+    default:
+      return prompt("No hay problema =D! Para comprar algo apreta F5");
+  };
 
-if (elije2 > 0) {
-  const elegido = productos[elije2 - 1];
-  prodElegidos.push(elegido);
-  elegido.mostrarInfo(); 
-} else {
-  return alert(`Perfecto, serian $${prodElegidos[0].precio} al contado! Gracias por tu compra!`);
+  const elije2 = prompt(
+    eleccion(
+      `Elije otro producto para aprovechar un INCREIBLE DESCUENTO del 15% en 6 cuotas SIN INTERESES!!!\n`,
+      "No quiero nada mas, gracias! / Cualquier tecla"
+    )
+  );
+  
+  switch (elije2.toLowerCase()) {
+    case "cartuchera":
+      prodElegidos.push(productos[0]);
+      productos[0].mostrarInfo();
+      break;
+    case "portacosmeticos":
+      prodElegidos.push(productos[1]);
+      productos[1].mostrarInfo();
+      break;
+    case "bolso":
+      prodElegidos.push(productos[2]);
+      productos[2].mostrarInfo();
+      break;
+    default:
+      return alert(
+        `Perfecto, serian $${prodElegidos[0].precio} al contado! Gracias por tu compra!`
+      );
   }
+
   //Pregunta por la superoferta
   superOfer = prompt(
     "Si elegis el ultimo producto, pagarias los 3 con un 40% de descuento! Que estas esperando?!\n Si/No "
@@ -129,65 +163,69 @@ productos.sort(function (a, b) {
   return 0;
 });
 
-function dibujarCard(producto){
-  const divCard = document.getElementById('cards');
-  const colCard = document.createElement('div');
+// Dibuja las cards de productos
+function dibujarCard(producto) {
+  const divCard = document.getElementById("cards");
+  const colCard = document.createElement("div");
   colCard.className = "col";
-  colCard.setAttribute('data-bs-target', '#exampleModal');
-  colCard.setAttribute('data-bs-toggle', 'modal')
+  colCard.setAttribute("data-bs-target", "#exampleModal");
+  colCard.setAttribute("data-bs-toggle", "modal");
   colCard.addEventListener("click", mostrarModal);
   divCard.appendChild(colCard);
-  const divCard2 = document.createElement('div')
-  divCard2.className = 'card';
-  colCard.appendChild(divCard2)
-  const cardImg = document.createElement('img');
-  cardImg.setAttribute("src", producto.imagen)
-  cardImg.setAttribute("alt", "producto")
+  const divCard2 = document.createElement("div");
+  divCard2.className = "card";
+  colCard.appendChild(divCard2);
+  const cardImg = document.createElement("img");
+  cardImg.setAttribute("src", producto.imagen);
+  cardImg.setAttribute("alt", "producto");
   divCard2.appendChild(cardImg);
-  const bodyDiv = document.createElement('div');
-  bodyDiv.className = 'card-body'
+  const bodyDiv = document.createElement("div");
+  bodyDiv.className = "card-body";
   divCard2.appendChild(bodyDiv);
-  const cardTitle = document.createElement('h5');
+  const cardTitle = document.createElement("h5");
   cardTitle.innerText = producto.nombre;
   bodyDiv.appendChild(cardTitle);
-  const stock = document.createElement('p');
+  const stock = document.createElement("p");
   stock.innerText = `Stock: ${producto.stock}`;
-  stock.setAttribute('id', 'stock')
-  bodyDiv.appendChild(stock)
-  const cardPrecio = document.createElement('p');
-  cardPrecio.innerText = `$ ${producto.precio}`
-  cardPrecio.setAttribute('id','precio')
+  stock.setAttribute("id", "stock");
+  bodyDiv.appendChild(stock);
+  const cardPrecio = document.createElement("p");
+  cardPrecio.innerText = `$ ${producto.precio}`;
+  cardPrecio.setAttribute("id", "precio");
   bodyDiv.appendChild(cardPrecio);
-  const btnCompra = document.createElement('button');
-  btnCompra.innerText = 'Agregar al Carrito'
-  btnCompra.className = 'btn btn-primary col-12'
-  bodyDiv.appendChild(btnCompra)
-
-}
-
-function mostrarModal(e){
-  const cardElejida = e.target.parentElement.parentElement;
-  const modal = document.getElementById('myModal');
-
-  
-
-
-  const infoCard = {
-    nombre: cardElejida.querySelector('h5').textContent,
-    imagen: cardElejida.querySelector('img').src,
-    stock: cardElejida.querySelector('#stock').textContent,
-    precio: cardElejida.querySelector('#precio').textContent
-  }
-
-  modal.firstElementChild.setAttribute('src',cardElejida.querySelector('img').src)
-  modal.children[1].children[0].innerHTML = cardElejida.querySelector('h5').textContent;
-  modal.children[1].children[1].children[0].innerHTML = cardElejida.querySelector('#precio').textContent
-  modal.children[1].children[1].children[1].innerHTML = cardElejida.querySelector('#stock').textContent
-  console.log(infoCard)
+  const btnCompra = document.createElement("button");
+  btnCompra.innerText = "Agregar al Carrito";
+  btnCompra.className = "btn btn-primary col-12";
+  bodyDiv.appendChild(btnCompra);
 }
 
 for (let i = 0; i < productos.length; i++) {
-  dibujarCard(productos[i])
+  dibujarCard(productos[i]);
 }
 
-// window.onload = saludar();
+//Funcion para mostrar el modal de la card elejida
+function mostrarModal(e) {
+  const cardElejida = e.target.parentElement.parentElement;
+  const modal = document.getElementById("myModal");
+
+  const infoCard = {
+    nombre: cardElejida.querySelector("h5").textContent,
+    imagen: cardElejida.querySelector("img").src,
+    stock: cardElejida.querySelector("#stock").textContent,
+    precio: cardElejida.querySelector("#precio").textContent,
+  };
+
+  modal.firstElementChild.setAttribute(
+    "src",
+    cardElejida.querySelector("img").src
+  );
+  modal.children[1].children[0].innerHTML =
+    cardElejida.querySelector("h5").textContent;
+  modal.children[1].children[1].children[0].innerHTML =
+    cardElejida.querySelector("#precio").textContent;
+  modal.children[1].children[1].children[1].innerHTML =
+    cardElejida.querySelector("#stock").textContent;
+  console.log(infoCard);
+}
+
+window.onload = saludar();
