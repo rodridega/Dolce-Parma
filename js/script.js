@@ -133,6 +133,9 @@ function dibujarCard(producto){
   const divCard = document.getElementById('cards');
   const colCard = document.createElement('div');
   colCard.className = "col";
+  colCard.setAttribute('data-bs-target', '#exampleModal');
+  colCard.setAttribute('data-bs-toggle', 'modal')
+  colCard.addEventListener("click", mostrarModal);
   divCard.appendChild(colCard);
   const divCard2 = document.createElement('div')
   divCard2.className = 'card';
@@ -158,9 +161,6 @@ function dibujarCard(producto){
   const btnCompra = document.createElement('button');
   btnCompra.innerText = 'Agregar al Carrito'
   btnCompra.className = 'btn btn-primary col-12'
-  btnCompra.setAttribute('data-bs-target', '#exampleModal')
-  btnCompra.setAttribute('data-bs-toggle', 'modal')
-  btnCompra.addEventListener("click", mostrarModal);
   bodyDiv.appendChild(btnCompra)
 
 }
