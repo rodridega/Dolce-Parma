@@ -109,4 +109,20 @@ header nav div div {
 footer {
   background-color: #61577F;
 }
+
+#carritoList {
+  list-style: none;
+}
+
+#carritoList li {
+  margin-right: 30px;
+}
+
+#carritoList li a {
+  color: #61577F;
+}
+
+.dropdown-menu[data-bs-popper] {
+  left: -150px;
+}
 /*# sourceMappingURL=style.css.map */

@@ -78,3 +78,15 @@ header {
 footer{
   background-color: $color2;
 }
+#carritoList{
+  list-style: none;
+  li{
+    margin-right: 30px;
+    a{
+      color: $color2;
+    }
+  }
+}
+.dropdown-menu[data-bs-popper]{
+  left: -150px
+}
