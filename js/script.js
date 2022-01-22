@@ -6,9 +6,6 @@ class Producto {
     this.stock = stock;
     this.id = id;
   }
-  mostrarInfo() {
-    alert(`Elegiste ${this.nombre} a un valor de $${this.precio}`);
-  }
 }
 
 //VARIABLES
@@ -20,7 +17,9 @@ productos.push(
   new Producto("Portacosmeticos", "imagenes/producto (3).jpeg", 720, 4, 3),
   new Producto("Portacosmeticos", "imagenes/producto (4).jpeg", 300, 1, 4),
   new Producto("Cartuchera", "imagenes/producto (5).jpeg", 400, 2, 5),
-  new Producto("Portacosmeticos", "imagenes/producto (6).jpeg", 1000, 5, 6)
+  new Producto("Portacosmeticos", "imagenes/producto (6).jpeg", 1000, 5, 6),
+  new Producto("Bolso", "imagenes/producto (7).jpeg", 1000, 5, 7),
+  new Producto("Portacosmeticos", "imagenes/producto (8).jpeg", 1000, 5, 8)
 );
 
 
@@ -30,6 +29,13 @@ const divCard = document.getElementById("cards");
 let productosCarrito = []
 
 
+
+   //EVENTOS
+
+   cargarAddEventListeners()
+   function cargarAddEventListeners(){
+      
+   }
 
 /*FUNCIONES */
 
@@ -41,7 +47,7 @@ productos.forEach((producto) =>{
   divCard.appendChild(colCard);
   colCard.innerHTML = 
   `<div class="card" id="prod-${producto.id}" >
-      <img src="${producto.imagen} " class="card-img-top" alt="producto" data-bs-target="#exampleModal" data-bs-toggle="modal">
+      <img src="${producto.imagen} " class="card-img-top" alt="producto" data-bs-target="#exampleModal" data-bs-toggle="modal" >
       <div class="card-body">
         <h5 class="card-title">${producto.nombre} </h5>
         <p class="card-text" id="stock"> Stock: ${producto.stock} </p>
@@ -56,28 +62,34 @@ productos.forEach((producto) =>{
 
 
 //MUESTRA UN MODAL DE LA CARD ELEGIDA
-
-function mostrarModal(producto) {
+function mostrarModal(producto){
   const modal = document.getElementById("myModal");
-  
-  modal.firstElementChild.setAttribute("src",`${producto.imagen}`);
-  modal.children[1].children[0].innerHTML = `${producto.nombre} `;
-  modal.children[1].children[1].children[0].innerHTML = `${producto.precio} `;
-  modal.children[1].children[1].children[1].innerHTML = `${producto.stock} `;
-  const btnModal = document.querySelector('.modal-footer .agregarCarrito')
+  modal.innerHTML = 
+  `<img src="${producto.imagen}" alt="modal" class="img-fluid">
+    <div class="p-3">
+      <h4 class="p-1">${producto.nombre} </h4>
+      <div class="d-flex justify-content-between ">
+          <p class="fs-4">${producto.precio}</p>
+          <p class="fs-5">${producto.stock}</p>
+      </div>
+    </div>
+  `
+  const modalFooter = document.getElementById('myModalFooter');
+  modalFooter.innerHTML = 
+  ` <button type="button" class="btn btn-primary agregarCarrito">Agregar al carrito</button>
+    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+  `
+  const btnModal = document.querySelector('#myModalFooter .agregarCarrito')
   btnModal.addEventListener("click", () => agregarProducto(producto))
-
 }
+
+
 
 //AGREGA PRODUCTO AL CARRITO
 
 function agregarProducto(producto){
-  debugger
-  const btnCompra = document.querySelector(`#prod-${producto.id} .agregarCarrito`)
-  btnCompra.innerHTML = "Quitar del carrito"
-  btnCompra.classList ='btn btn-danger col-12'
-  productosCarrito.push(producto)
   
+  productosCarrito.push(producto) 
   renderCarrito();
 }
 
@@ -88,6 +100,8 @@ function vaciarCarrito(){
 vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
 
 //LEE DATOS DEL PRODUCTO
+
+
 
 function renderCarrito(){
   let total = 0;
@@ -103,7 +117,9 @@ function renderCarrito(){
         </th>
         <td>${producto.nombre} </td>
         <td>${producto.precio} </td>
-      </tr>`
+        <td><a href="#" class="btn btn-danger" onClick="quitarProducto(${producto.id})" data-id="${producto.id}"id="quitar">X</a></td>
+      </tr>`;
+
   } )
   htm += `<tr>
   <th scope="row">
@@ -112,9 +128,13 @@ function renderCarrito(){
  
   <td colspan="2" class="text-end"> $ ${total}</td>
 </tr>`
-  tBody.innerHTML= htm
-  
-  
+  tBody.innerHTML = htm
+ 
 }
 
 
+function quitarProducto(id){
+  const copiaCarrito = [...productosCarrito]
+  productosCarrito = copiaCarrito.filter(prod => id !== prod.id)
+  renderCarrito()
+ }

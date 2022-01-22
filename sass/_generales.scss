@@ -86,11 +86,9 @@ footer{
       max-height: 80vh;
       overflow-y: auto;
     }
-    a{
-      color: $color2;
-    }
+    
   }
 }
 .dropdown-menu[data-bs-popper]{
-  left: -250px
+  left: -300px
 }

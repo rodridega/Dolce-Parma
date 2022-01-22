@@ -123,11 +123,7 @@ footer {
   overflow-y: auto;
 }
 
-#carritoList li a {
-  color: #61577F;
-}
-
 .dropdown-menu[data-bs-popper] {
-  left: -250px;
+  left: -300px;
 }
 /*# sourceMappingURL=style.css.map */

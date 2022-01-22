@@ -1,217 +1,248 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Dolce Parma</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
-    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-  <link rel="stylesheet" href="css/style.css" />
-  <title>Dolce Parma</title>
-</head>
-
-<body>
-  <header>
-    <nav class="navbar navbar-light fixed-top navbar-expand-lg d-flex justify-content-between">
-      <div class="col-md-4">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Productos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Sobre mi</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contacto</a>
+  <body>
+    <header>
+      <nav
+        class="navbar navbar-light fixed-top navbar-expand-lg d-flex justify-content-between"
+      >
+        <div class="col-md-4">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-start"
+            id="navbarNav"
+          >
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Inicio</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Productos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Sobre mi</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contacto</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <ul id="carritoList" class="m-0 p-0">
+            <li class="nav-item dropdown fs-1">
+              <a
+                class="nav-link"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                ><i class="fa-solid fa-cart-shopping"></i
+              ></a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <div id="carrito">
+                    <table class="table" id="listaCarrito">
+                      <thead>
+                        <tr>
+                          <th scope="col">Imagen</th>
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Precio</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tbody"></tbody>
+                    </table>
+                    <div class="d-flex">
+                      <a href="#" class="btn btn-danger" id="vaciarCarrito"
+                        >Vaciar Carrito</a
+                      >
+                    </div>
+                  </div>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
-      </div>
-      <div>
-        <ul id="carritoList" class="m-0 p-0">
-          <li class="nav-item dropdown fs-1"  >
-            <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-cart-shopping"></i></a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
-              <li >
-                <div id="carrito">
-                  <table class="table" id="listaCarrito">
-                    <thead>
-                      <tr>
-                        <th scope="col">Imagen</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col" >Precio</th>
-                      </tr>
-                    </thead>
-                    <tbody id="tbody">
-                      
-                    </tbody>
-                  </table>
-                  <div class="d-flex">
-                    <a href="#" class="btn btn-primary" id="vaciarCarrito">Vaciar Carrito</a>
-                  </div>
-                </div>
-              </li>
-             
-            </ul>
-          </li>
-      </ul>
-      </div>
-    </nav>
-
-  </header>
-  <main>
-    <!-- <section class="seccion1"></section> -->
-    <section class="productos">
-      <h2 class="text-center">Productos</h2>
-      <div class="cards">
-        <div class="row row-cols-2 row-cols-md-4 g-4 container cards" id="cards">
-
+      </nav>
+    </header>
+    <main>
+      <!-- <section class="seccion1"></section> -->
+      <section class="productos">
+        <h2 class="text-center">Productos</h2>
+        <div class="cards">
+          <div
+            class="row row-cols-2 row-cols-md-4 g-4 container cards"
+            id="cards"
+          ></div>
         </div>
-      </div>
-    </section>
-
-
-
-    <section class="sobreMi">
-      <div class="container">
-        <h2 class="text-center">Sobre mi</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-          laborum inventore modi nihil, quos beatae a. Modi est vitae aut
-          possimus non odio, nemo fuga adipisci voluptatum suscipit
-          repellendus aliquam. In quis minima repudiandae nisi exercitationem
-          optio tenetur fugit? Necessitatibus sit facilis illum placeat cum
-          officia, eum maiores iusto delectus nostrum, voluptas maxime in
-          quibusdam hic aut, animi natus voluptatum. Animi, sequi accusamus
-          voluptate aut nostrum vitae atque accusantium ducimus quo
-          exercitationem, assumenda nobis aspernatur unde ab. Praesentium,
-          saepe, vero quo explicabo perferendis voluptate rem earum eligendi,
-          deleniti dolores aliquam!
-        </p>
-      </div>
-    </section>
-  </main>
-  <footer class="text-center text-lg-start text-black">
-    <!-- Grid container -->
-    <div class="container p-4 pb-0">
-      <!-- Section: Links -->
-      <section class="">
-        <!--Grid row-->
-        <div class="row">
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-            <h6 class="text-uppercase mb-4 font-weight-bold">Dolce Parma</h6>
-            <p>
-              Diseño independiente.
-              <br />
-              San Benito. Entre Ríos . Argentina
-            </p>
-          </div>
-          <!-- Grid column -->
-
-          <hr class="w-100 clearfix d-md-none" />
-
-          <!-- Grid column -->
-          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-            <h6 class="text-uppercase mb-4 font-weight-bold">Productos</h6>
-            <p>
-              <a class="text-black">Portacosmeticos</a>
-            </p>
-            <p>
-              <a class="text-black">Cartucheras</a>
-            </p>
-            <p>
-              <a class="text-black">Porta termos</a>
-            </p>
-            <p>
-              <a class="text-black">Muchas cosas mas!</a>
-            </p>
-          </div>
-          <!-- Grid column -->
-
-          <hr class="w-100 clearfix d-md-none" />
-
-          <!-- Grid column -->
-          <hr class="w-100 clearfix d-md-none" />
-
-          <!-- Grid column -->
-          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-            <h6 class="text-uppercase mb-4 font-weight-bold">Contactanos</h6>
-            <p><i class="fas fa-home mr-3"></i> "Tu direccion"</p>
-            <p><i class="fas fa-envelope mr-3"></i> "tu email"</p>
-            <p><i class="fas fa-phone mr-3"></i> "telefonos"</p>
-            <p><i class="fas fa-print mr-3"></i> "telefonos"</p>
-          </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-            <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
-
-            <!-- Facebook -->
-            <a class="btn btn-floating m-1" style="background-color: #3b5998" href="#!" role="button"><i
-                class="fab fa-facebook-f"></i></a>
-
-            <!-- Instagram -->
-            <a class="btn btn-floating m-1" style="background-color: #ac2bac" href="#!" role="button"><i
-                class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-        <!--Grid row-->
       </section>
-      <!-- Section: Links -->
-    </div>
-    <!-- Grid container -->
 
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-      © 2021 Copyright:
-      <a class="text-white" href="https://github.com/rodridega">Deganutti Rodrigo</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
+      <section class="sobreMi">
+        <div class="container">
+          <h2 class="text-center">Sobre mi</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+            laborum inventore modi nihil, quos beatae a. Modi est vitae aut
+            possimus non odio, nemo fuga adipisci voluptatum suscipit
+            repellendus aliquam. In quis minima repudiandae nisi exercitationem
+            optio tenetur fugit? Necessitatibus sit facilis illum placeat cum
+            officia, eum maiores iusto delectus nostrum, voluptas maxime in
+            quibusdam hic aut, animi natus voluptatum. Animi, sequi accusamus
+            voluptate aut nostrum vitae atque accusantium ducimus quo
+            exercitationem, assumenda nobis aspernatur unde ab. Praesentium,
+            saepe, vero quo explicabo perferendis voluptate rem earum eligendi,
+            deleniti dolores aliquam!
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="text-center text-lg-start text-black">
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <!-- Section: Links -->
+        <section class="">
+          <!--Grid row-->
+          <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Dolce Parma</h6>
+              <p>
+                Diseño independiente.
+                <br />
+                San Benito. Entre Ríos . Argentina
+              </p>
+            </div>
+            <!-- Grid column -->
 
-  <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <!-- <div class="modal-header">
-            
-          </div> -->
-        <div class="modal-body p-0" id="myModal">
-          <img src="" alt="modal" class="img-fluid">
-          <div class="p-3">
-            <h4 class="p-1"></h4>
-            <div class="d-flex justify-content-between ">
-              <p class="fs-4"></p>
-              <p class="fs-5"></p>
+            <hr class="w-100 clearfix d-md-none" />
+
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Productos</h6>
+              <p>
+                <a class="text-black">Portacosmeticos</a>
+              </p>
+              <p>
+                <a class="text-black">Cartucheras</a>
+              </p>
+              <p>
+                <a class="text-black">Porta termos</a>
+              </p>
+              <p>
+                <a class="text-black">Muchas cosas mas!</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+
+            <hr class="w-100 clearfix d-md-none" />
+
+            <!-- Grid column -->
+            <hr class="w-100 clearfix d-md-none" />
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Contactanos</h6>
+              <p><i class="fas fa-home mr-3"></i> "Tu direccion"</p>
+              <p><i class="fas fa-envelope mr-3"></i> "tu email"</p>
+              <p><i class="fas fa-phone mr-3"></i> "telefonos"</p>
+              <p><i class="fas fa-print mr-3"></i> "telefonos"</p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
+
+              <!-- Facebook -->
+              <a
+                class="btn btn-floating m-1"
+                style="background-color: #3b5998"
+                href="#!"
+                role="button"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+
+              <!-- Instagram -->
+              <a
+                class="btn btn-floating m-1"
+                style="background-color: #ac2bac"
+                href="#!"
+                role="button"
+                ><i class="fab fa-instagram"></i
+              ></a>
             </div>
           </div>
-        </div>
+          <!--Grid row-->
+        </section>
+        <!-- Section: Links -->
+      </div>
+      <!-- Grid container -->
 
-        <div class="modal-footer d-flex justify-content-between">
-          <button type="button" class="btn btn-primary agregarCarrito">Agregar al carrito</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2021 Copyright:
+        <a class="text-white" href="https://github.com/rodridega"
+          >Deganutti Rodrigo</a
+        >
+      </div>
+      <!-- Copyright -->
+    </footer>
+
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body p-0" id="myModal"></div>
+          <div
+            class="modal-footer d-flex justify-content-between"
+            id="myModalFooter"
+          ></div>
         </div>
       </div>
     </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-  <script src="js/script.js" defer></script>
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/script.js" defer></script>
+  </body>
 </html>
