@@ -82,11 +82,15 @@ footer{
   list-style: none;
   li{
     margin-right: 30px;
+    ul{
+      max-height: 80vh;
+      overflow-y: auto;
+    }
     a{
       color: $color2;
     }
   }
 }
 .dropdown-menu[data-bs-popper]{
-  left: -150px
+  left: -250px
 }
