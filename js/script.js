@@ -29,17 +29,12 @@ const divCard = document.getElementById("cards");
 let productosCarrito = []
 
 
-
-   //EVENTOS
-
-   cargarAddEventListeners()
-   function cargarAddEventListeners(){
-      
-   }
+// EVENTOS
 
 /*FUNCIONES */
 
 // DIBUJA LAS CARDS
+
 productos.forEach((producto) =>{
   const colCard = document.createElement("div");
   colCard.className = "col";
@@ -62,16 +57,20 @@ productos.forEach((producto) =>{
 
 
 //MUESTRA UN MODAL DE LA CARD ELEGIDA
+
 function mostrarModal(producto){
   const modal = document.getElementById("myModal");
   modal.innerHTML = 
   `<img src="${producto.imagen}" alt="modal" class="img-fluid">
-    <div class="p-3">
-      <h4 class="p-1">${producto.nombre} </h4>
+    <div class="p-3 d-flex flex-column">
+      <h4 class="p-1 text-center">${producto.nombre} </h4>
       <div class="d-flex justify-content-between ">
-          <p class="fs-4">${producto.precio}</p>
-          <p class="fs-5">${producto.stock}</p>
+          <p class="fs-4">$${producto.precio}</p>
+          <p class="fs-4">Stock: ${producto.stock}</p>
       </div>
+      <div>
+        <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor enim, vitae voluptas officiis magni ducimus culpa molestias</p>
+      </div>    
     </div>
   `
   const modalFooter = document.getElementById('myModalFooter');
@@ -85,23 +84,37 @@ function mostrarModal(producto){
 
 
 
-//AGREGA PRODUCTO AL CARRITO
+//AGREGA PRODUCTO AL CARRITO Y MODIFICA LOS BOTONES
 
 function agregarProducto(producto){
   
+  const btnCompra = document.querySelector(`#prod-${producto.id} .agregarCarrito`)
+  btnCompra.classList.replace("agregarCarrito","quitarCarrito") 
+  btnCompra.classList.replace("btn-primary","btn-danger") 
+  btnCompra.innerHTML = "Quitar del carrito"
+  btnCompra.addEventListener('click', () => quitarProducto(producto.id))
   productosCarrito.push(producto) 
   renderCarrito();
 }
 
+
+//VACIAR CARRITO
+
 function vaciarCarrito(){
   productosCarrito = [];
+  const botones = document.querySelectorAll(".quitarCarrito")
+  botones.forEach((boton) =>{
+    boton.classList.replace("quitarCarrito", "agregarCarrito")
+    boton.classList.replace("btn-danger", "btn-primary")
+    boton.innerHTML= "Agregar al Carrito"
+  })
+  console.log(botones);
   renderCarrito();
 }
 vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
 
-//LEE DATOS DEL PRODUCTO
 
-
+//RENDERIZA EL CARRITO
 
 function renderCarrito(){
   let total = 0;
@@ -132,9 +145,17 @@ function renderCarrito(){
  
 }
 
+//QUITA PRODUCTOS DEL CARRITO SEGUN ID
 
 function quitarProducto(id){
+  
   const copiaCarrito = [...productosCarrito]
   productosCarrito = copiaCarrito.filter(prod => id !== prod.id)
+  const btnQuitar = document.querySelector(`#prod-${id} .quitarCarrito`)
+  btnQuitar.classList.replace("quitarCarrito","agregarCarrito") 
+  btnQuitar.classList.replace("btn-danger","btn-primary") 
+  btnQuitar.innerHTML = "Agregar al Carrito"
+  const prod = productos.filter(producto => producto.id === id)
+  btnQuitar.addEventListener("click", agregarProducto(prod))
   renderCarrito()
  }
