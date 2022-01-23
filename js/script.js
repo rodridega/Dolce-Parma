@@ -12,14 +12,14 @@ class Producto {
 
 const productos = [];
 productos.push(
-  new Producto("Cartuchera", "imagenes/producto (1).jpeg", 450, 3, 1),
+  new Producto("Cartuchera", "imagenes/producto (1).jpg", 450, 3, 1),
   new Producto("Bolso", "imagenes/producto (2).jpeg", 1500, 2, 2),
-  new Producto("Portacosmeticos", "imagenes/producto (3).jpeg", 720, 4, 3),
+  new Producto("Portacosmeticos", "imagenes/producto (3).jpg", 720, 4, 3),
   new Producto("Portacosmeticos", "imagenes/producto (4).jpeg", 300, 1, 4),
   new Producto("Cartuchera", "imagenes/producto (5).jpeg", 400, 2, 5),
-  new Producto("Portacosmeticos", "imagenes/producto (6).jpeg", 1000, 5, 6),
-  new Producto("Bolso", "imagenes/producto (7).jpeg", 1000, 5, 7),
-  new Producto("Portacosmeticos", "imagenes/producto (8).jpeg", 1000, 5, 8)
+  new Producto("Portacosmeticos", "imagenes/producto (6).jpg", 1000, 5, 6),
+  new Producto("Bolso", "imagenes/producto (7).jpg", 1000, 5, 7),
+  new Producto("Portacosmeticos", "imagenes/producto (8).jpg", 1000, 5, 8)
 );
 
 
@@ -30,7 +30,14 @@ let productosCarrito = []
 
 
 // EVENTOS
+eventListeners()
+function eventListeners(){
 
+  document.addEventListener('DOMContentLoaded', () => {
+    productosCarrito = JSON.parse(localStorage.getItem('carrito') || [])
+    renderCarrito()
+  })
+}
 /*FUNCIONES */
 
 // DIBUJA LAS CARDS
@@ -41,14 +48,16 @@ productos.forEach((producto) =>{
   colCard.addEventListener("click", () => mostrarModal(producto));
   divCard.appendChild(colCard);
   colCard.innerHTML = 
-  `<div class="card" id="prod-${producto.id}" >
-      <img src="${producto.imagen} " class="card-img-top" alt="producto" data-bs-target="#exampleModal" data-bs-toggle="modal" >
+  `<div class="card" id="prod-${producto.id}">
+      
+      <img src="${producto.imagen}" class="card-img-top" alt="producto" data-bs-target="#exampleModal" data-bs-toggle="modal">
       <div class="card-body">
         <h5 class="card-title">${producto.nombre} </h5>
         <p class="card-text" id="stock"> Stock: ${producto.stock} </p>
         <p class="card-text" id="precio">$${producto.precio} </p>
         <button class="btn btn-primary col-12 agregarCarrito">Agregar al Carrito</button>
       </div>
+      
     </div>`
     const btnCompra = document.querySelector(`#prod-${producto.id} .agregarCarrito`)
     btnCompra.addEventListener('click',  () => agregarProducto(producto))
@@ -88,11 +97,6 @@ function mostrarModal(producto){
 
 function agregarProducto(producto){
   
-  const btnCompra = document.querySelector(`#prod-${producto.id} .agregarCarrito`)
-  btnCompra.classList.replace("agregarCarrito","quitarCarrito") 
-  btnCompra.classList.replace("btn-primary","btn-danger") 
-  btnCompra.innerHTML = "Quitar del carrito"
-  btnCompra.addEventListener('click', () => quitarProducto(producto.id))
   productosCarrito.push(producto) 
   renderCarrito();
 }
@@ -108,7 +112,6 @@ function vaciarCarrito(){
     boton.classList.replace("btn-danger", "btn-primary")
     boton.innerHTML= "Agregar al Carrito"
   })
-  console.log(botones);
   renderCarrito();
 }
 vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
@@ -143,6 +146,7 @@ function renderCarrito(){
 </tr>`
   tBody.innerHTML = htm
  
+  sincronizarStorage();
 }
 
 //QUITA PRODUCTOS DEL CARRITO SEGUN ID
@@ -151,11 +155,11 @@ function quitarProducto(id){
   
   const copiaCarrito = [...productosCarrito]
   productosCarrito = copiaCarrito.filter(prod => id !== prod.id)
-  const btnQuitar = document.querySelector(`#prod-${id} .quitarCarrito`)
-  btnQuitar.classList.replace("quitarCarrito","agregarCarrito") 
-  btnQuitar.classList.replace("btn-danger","btn-primary") 
-  btnQuitar.innerHTML = "Agregar al Carrito"
-  const prod = productos.filter(producto => producto.id === id)
-  btnQuitar.addEventListener("click", agregarProducto(prod))
   renderCarrito()
  }
+
+ //SINCRONIZA EL STORAGE
+
+  function sincronizarStorage(){
+    localStorage.setItem('carrito', JSON.stringify(productosCarrito))
+  }
