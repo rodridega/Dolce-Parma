@@ -96,8 +96,14 @@ function mostrarModal(producto){
 //AGREGA PRODUCTO AL CARRITO Y MODIFICA LOS BOTONES
 
 function agregarProducto(producto){
+  const prodObj = {
+    nombre : producto.nombre,
+    precio : producto.precio,
+    imagen : producto.imagen,
+    date : Date.now()
+  }
+  productosCarrito.push(prodObj) 
   
-  productosCarrito.push(producto) 
   renderCarrito();
 }
 
@@ -122,39 +128,62 @@ vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
 function renderCarrito(){
   let total = 0;
   const tBody = document.querySelector("#tbody")
-  tBody.innerHTML= ""
-  let htm = ""
+
+  limpiarHTML(tBody)
+
   productosCarrito.forEach((producto) => {
     total += producto.precio
-    htm += 
-    ` <tr>
-        <th scope="row">
-          <img src="${producto.imagen}" width="100px">
-        </th>
-        <td>${producto.nombre} </td>
-        <td>${producto.precio} </td>
-        <td><a href="#" class="btn btn-danger" onClick="quitarProducto(${producto.id})" data-id="${producto.id}"id="quitar">X</a></td>
-      </tr>`;
-
+    const tRow = document.createElement('tr')
+    const tImg = document.createElement('th')
+    const imgCarrito = document.createElement('img')
+    const tName = document.createElement('th')
+    const tPrecio = document.createElement('th')
+    const tQuitar = document.createElement('th')
+    const enlaceQuitar = document.createElement('a')
+    imgCarrito.setAttribute("src",`${producto.imagen}`)
+    imgCarrito.setAttribute("width","100px")
+    enlaceQuitar.classList.add("btn")
+    enlaceQuitar.classList.add("btn-danger")
+    enlaceQuitar.setAttribute('onClick', `quitarProducto(${producto.date})`)
+    tName.innerHTML = `${producto.nombre}`;
+    tPrecio.innerHTML = `${producto.precio}`;
+    enlaceQuitar.innerHTML = "X"
+    tBody.append(tRow)
+    tRow.appendChild(tImg)
+    tImg.appendChild(imgCarrito)
+    tRow.appendChild(tName)
+    tRow.appendChild(tPrecio)
+    tRow.appendChild(tQuitar)
+    tQuitar.appendChild(enlaceQuitar)
   } )
-  htm += `<tr>
-  <th scope="row">
-    Total
-  </th>
- 
-  <td colspan="2" class="text-end"> $ ${total}</td>
-</tr>`
-  tBody.innerHTML = htm
- 
+
+  const totalRow = document.createElement('tr')
+  const tTotal = document.createElement('th')
+  const tValor = document.createElement('td')
+  tTotal.innerHTML = `<p class="fs-3"> TOTAL </p>` 
+  tValor.setAttribute("colspan", "2")
+  tValor.classList.add("text-end")
+  tValor.innerHTML = `<p class="fs-3"> $${total} </p>` 
+  tBody.append(totalRow)
+  totalRow.append(tTotal)
+  totalRow.append(tValor)
+
   sincronizarStorage();
 }
 
+function limpiarHTML(elemento){
+ while (elemento.firstChild) {
+   elemento.removeChild(elemento.firstChild)
+ }
+}
+
+
 //QUITA PRODUCTOS DEL CARRITO SEGUN ID
 
-function quitarProducto(id){
-  
+function quitarProducto(date){
+  console.log(productosCarrito);
   const copiaCarrito = [...productosCarrito]
-  productosCarrito = copiaCarrito.filter(prod => id !== prod.id)
+  productosCarrito = copiaCarrito.filter(prod => date !== prod.date)
   renderCarrito()
  }
 
@@ -163,3 +192,4 @@ function quitarProducto(id){
   function sincronizarStorage(){
     localStorage.setItem('carrito', JSON.stringify(productosCarrito))
   }
+
