@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/8b222f2286.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Deganutti Rodrigo</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top header">
+        <div class="container">
+          <div class="d-flex flex-row justify-content-between w-100">
+            <a class="navbar-brand" href="index.html">Rodrigo Deganutti</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html#aboutMe">Sobre mi</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html#portfolio">Portfolio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html#contact">Contacto</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section id="greetings">
+        <div class="container d-flex flex-column saludo">
+          <div class="p-4">
+            <h1 class="text-center pt-5">
+              Hola! <br />
+              Soy Rodrigo <br />
+              Jr. Frontend Dev
+            </h1>
+          </div>
+          <div class="d-flex align-items-end photoGreetings">
+            <div id="photo">
+              <img src="images/fotoPort.jpg" alt="foto portfolio" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="aboutMe">
+        <div class="container">
+          <h2 class="text-center p-4">Sobre mi</h2>
+          <div class="d-flex flex-column">
+            <div>
+              <p class="fs-3 text-center">
+                Soy una persona con mucha
+                <span>motivación</span> por aprender cosas nuevas, por lo que
+                desde que tengo memoria estoy <span>estudiando</span>. <br />
+                Busco cambiar mi carrera actual, en un lugar donde pueda aportar
+                mis <span>conocimientos</span>, asi como seguir creciendo en el
+                maravilloso mundo de la programación.
+                Mi Stack actual: HTML5, CSS3, SASS, Bootstrap, JavaScript.
+              </p>
+            </div>
+            <div>
+              <img src="images/fotoPortfolio.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="portfolio">
+        <h2 class="text-center p-3">Portfolio</h2>
+        <div class="d-flex flex-column container">
+          <div class="descProyect p-4">
+            <h3>Dolce Parma</h3>
+            <div
+              class="photoProyect shadow-sm p-3 mb-5 bg-body rounded"
+              data-aos="fade-right"
+              data-aos-easing="linear"
+              data-aos-duration="1500"
+            >
+              <a href="https://rodridega.github.io/Dolce-Parma/"
+                ><img src="images/Dolce Parma.png" alt="photo Proyect"
+              /></a>
+            </div>
+
+            <p class="fs-4">
+              Dolce Parma, es un E-commerce de productos hechos a mano para el
+              cuidado personal, desarrollado con:
+              <span>HTML5, CSS3, SASS, Bootstrap, JavaScript, Jquery.</span>
+            </p>
+          </div>
+        </div>
+        <div class="d-flex flex-column container">
+          <div class="descProyect p-4">
+            <h3>DigitalMed</h3>
+            <div
+              class="photoProyect shadow-sm p-3 mb-5 bg-body rounded"
+              data-aos="fade-right"
+              data-aos-easing="linear"
+              data-aos-duration="1500"
+            >
+              <a href="https://rodridega.github.io/DigitalMed/"
+                ><img src="images/DigitalMed.png" alt="photo Proyect"
+              /></a>
+            </div>
+
+            <p class="fs-4">
+              DigitalMed es una Webpage de hospital o consultorio, destinada a
+              mejorar la calidad de atención de los pacientes, ofreciendo
+              información del establecimiento, solicitud de turnos online y
+              medicamentos, seguimiento de historia clínica e información sobre
+              obras sociales. Desarrollado con:
+              <span>HTML5, CSS3, SASS, Bootstrap.</span>
+            </p>
+          </div>
+        </div>
+        <div class="d-flex flex-column container">
+          <div class="descProyect p-4">
+            <h3>3-Column preview card component</h3>
+            <div
+              class="photoProyect shadow-sm p-3 mb-5 bg-body rounded"
+              data-aos="fade-right"
+              data-aos-easing="linear"
+              data-aos-duration="1500"
+            >
+              <a
+                href="https://rodridega.github.io/FrontEnd-Mentors---3-columns/"
+                ><img src="images/card-fementor.png" alt="photo Proyect"
+              /></a>
+            </div>
+
+            <p class="fs-4">
+              Card realizada en desafios de Frontend-Mentor, Desarrollada con:
+              <span>HTML5 y CSS3.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="contact">
+        <div>
+          <footer>
+            <h2 class="text-center p-3">Contacto</h2>
+            <div class="container d-flex justify-content-between flex-wrap">
+              <div>
+                <a
+                  href="mailto:rodridega@gmail.com?Subject=Me%20interesa%20tu%20Portfolio"
+                  class="fs-3"
+                >
+                  rodridega@gmail.com
+                </a>
+              </div>
+              <div>
+                <ul class="d-flex">
+                  <li>
+                    <a href="https://github.com/rodridega"
+                      ><i class="fab fa-github fs-3 p-2"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href=""><i class="fab fa-linkedin fs-3 p-2"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </main>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+  </body>
+</html>

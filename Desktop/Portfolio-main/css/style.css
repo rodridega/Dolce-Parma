@@ -1,0 +1,120 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  background-color: #FFFFFF;
+}
+
+.header {
+  background-color: #353535;
+}
+
+.header a {
+  color: #FFFFFF;
+}
+
+.header #navbarSupportedContent {
+  width: 35%;
+}
+
+h1 {
+  color: #353535;
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #660066;
+  font-weight: bold;
+}
+
+h3 {
+  color: #660066;
+}
+
+span {
+  color: #660066;
+  font-weight: bold;
+}
+
+#photo {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#photo img {
+  width: 100%;
+  height: auto;
+}
+
+#aboutMe img {
+  display: none;
+}
+
+.photoProyect img {
+  width: 100%;
+  height: auto;
+}
+
+.photoProyect:hover {
+  cursor: pointer;
+}
+
+footer {
+  background-color: #353535;
+}
+
+footer h2 {
+  color: #FFFFFF;
+}
+
+footer a {
+  color: #FFFFFF;
+}
+
+footer a:hover {
+  color: #BDBBB0;
+}
+
+@media only screen and (min-width: 1024px) {
+  .saludo {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+        -ms-flex-direction: row-reverse !important;
+            flex-direction: row-reverse !important;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    padding-top: 7rem;
+  }
+  .saludo .photoGreetings {
+    width: 25%;
+  }
+  .saludo #photo {
+    width: 100%;
+    height: auto;
+  }
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 3rem;
+  }
+  h3 {
+    font-size: 2.5rem;
+  }
+}
+/*# sourceMappingURL=style.css.map */

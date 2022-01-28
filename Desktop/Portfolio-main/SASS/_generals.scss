@@ -1,0 +1,78 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Nunito Sans", sans-serif;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+body {
+  background-color: $color2;
+}
+.header {
+  background-color: $color1;
+  a {
+    color: $color2;
+  }
+#navbarSupportedContent{
+  width: 35%;
+}
+}
+h1 {
+  color: $color1;
+  font-size: 3rem;
+}
+h2 {
+  font-size: 1.5rem;
+  color: $color5;
+  font-weight: bold;
+}
+
+h3 {
+  color: $color5;
+}
+span{
+  color: $color5;
+  font-weight: bold;
+}
+#photo {
+  width: 50%;
+  margin: 0 auto;
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+#aboutMe {
+  img {
+    display: none;
+  }
+}
+.photoProyect {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+.photoProyect:hover{
+    cursor: pointer;
+}
+
+footer{
+  background-color: $color1;
+  h2{
+    color: $color2;
+  }
+  a{
+    color: $color2;
+  }
+  a:hover{
+    color: $color4;
+  }
+ 
+}
