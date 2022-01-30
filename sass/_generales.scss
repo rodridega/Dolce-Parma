@@ -7,12 +7,12 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: $color5 !important;
-  transform: scale(1.2);
+  color: $color1 !important;
+  
 }
 header {
   nav {
-    background-color: $color1;
+    background-color: $color5;
     font-size: 30px;
     div {
       div {
@@ -21,12 +21,7 @@ header {
     }
   }
 }
-.seccion1{
-  background-image: url(../imagenes/logo2.jpeg);  background-size: 100% ;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 20rem;
-}
+
 
 .productos {
   background-color: $color3;
@@ -57,7 +52,11 @@ header {
 .card:hover{
   background-color: rgb(221, 220, 220);
   cursor: pointer;
-}  
+}
+.boton{
+  background-color: $color5;
+  border: none;
+}
 .sobreMi {
   background-color: $color1;
   p {

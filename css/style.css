@@ -22,13 +22,11 @@ a {
 }
 
 a:hover {
-  color: #390164 !important;
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+  color: #FDC5F5 !important;
 }
 
 header nav {
-  background-color: #FDEDF7;
+  background-color: #390164;
   font-size: 30px;
 }
 
@@ -38,16 +36,8 @@ header nav div div {
           justify-content: flex-end;
 }
 
-.seccion1 {
-  background-image: url(../imagenes/logo2.jpeg);
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 20rem;
-}
-
 .productos {
-  background-color: #C1EAE3;
+  background-color: #B388EB;
 }
 
 .productos h2 {
@@ -87,8 +77,13 @@ header nav div div {
   cursor: pointer;
 }
 
+.boton {
+  background-color: #390164;
+  border: none;
+}
+
 .sobreMi {
-  background-color: #FDEDF7;
+  background-color: #FDC5F5;
 }
 
 .sobreMi p {
@@ -107,7 +102,7 @@ header nav div div {
 }
 
 footer {
-  background-color: #61577F;
+  background-color: #F7AEF8;
 }
 
 #carritoList {
