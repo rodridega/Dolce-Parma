@@ -49,7 +49,7 @@ productos.forEach((producto) =>{
         <h5 class="card-title">${producto.nombre} </h5>
         <p class="card-text" id="stock"> Stock: ${producto.stock} </p>
         <p class="card-text" id="precio">$${producto.precio} </p>
-        <button class="btn btn-primary col-12 agregarCarrito">Agregar al Carrito</button>
+        <button class="btn btn-primary col-12 agregarCarrito boton">Agregar al Carrito</button>
       </div>
     </div>
   </div>
@@ -57,7 +57,6 @@ productos.forEach((producto) =>{
   $(`#prod-${producto.id} .agregarCarrito`).click(() => agregarProducto(producto))
   $(`#modalCard-${producto.id}`).click(() => mostrarModal(producto))
 })
-
 
 
 //MUESTRA UN MODAL DE LA CARD ELEGIDA
@@ -77,8 +76,8 @@ function mostrarModal(producto){
   </div>
 `)
   $('#myModalFooter').html(`
-  <button type="button" class="btn btn-primary agregarCarrito">Agregar al carrito</button>
-  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+  <button type="button" class="btn btn-primary agregarCarrito boton">Agregar al carrito</button>
+  <button type="button" class="btn btn-primary boton" data-bs-dismiss="modal">Cancelar</button>
 `)
   $('#myModalFooter .agregarCarrito').click(() => agregarProducto(producto))
 }
