@@ -32,11 +32,11 @@ let productosCarrito = []
 // EVENTOS
 eventListeners()
 function eventListeners(){
-
-  document.addEventListener('DOMContentLoaded', () => {
+  $('document').ready(() =>{
     productosCarrito = JSON.parse(localStorage.getItem('carrito') || [])
     renderCarrito()
   })
+  
 }
 /*FUNCIONES */
 
@@ -112,15 +112,9 @@ function agregarProducto(producto){
 
 function vaciarCarrito(){
   productosCarrito = [];
-  const botones = document.querySelectorAll(".quitarCarrito")
-  botones.forEach((boton) =>{
-    boton.classList.replace("quitarCarrito", "agregarCarrito")
-    boton.classList.replace("btn-danger", "btn-primary")
-    boton.innerHTML= "Agregar al Carrito"
-  })
   renderCarrito();
 }
-vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
+$('#vaciarCarrito').click(vaciarCarrito)
 
 
 //RENDERIZA EL CARRITO
