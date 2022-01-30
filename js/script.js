@@ -169,7 +169,7 @@ function limpiarHTML(elemento){
  while (elemento.firstChild) {
    elemento.removeChild(elemento.firstChild)
  }
-}
+} 
 
 
 //QUITA PRODUCTOS DEL CARRITO SEGUN ID
