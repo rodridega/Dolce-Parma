@@ -29,7 +29,7 @@ header {
 
 
 .productos {
-  background-color: $color3;
+  background-color: $color1;
   h2{
     font-size: 30px;
     padding: 1rem;
@@ -44,14 +44,25 @@ header {
 
 .card {
   margin: 1rem 0rem;
+  height: 400px;
+  img{
+    height: 60%;
+    object-fit: contain;
+    padding: 0rem 1rem;
+    
+  }
   h5{
-    font-size: 15px;
+    font-size: 1rem;
     text-align: center;
+    
   }
   p {
     font-size: 12px;
     text-align: center;
     padding: 0px;
+  }
+  .card-body{
+    overflow: hidden;
   }
 }
 .card:hover{

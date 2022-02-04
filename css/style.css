@@ -40,7 +40,7 @@ header nav div div {
 }
 
 .productos {
-  background-color: #B388EB;
+  background-color: #FDC5F5;
 }
 
 .productos h2 {
@@ -62,10 +62,18 @@ header nav div div {
 
 .card {
   margin: 1rem 0rem;
+  height: 400px;
+}
+
+.card img {
+  height: 60%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  padding: 0rem 1rem;
 }
 
 .card h5 {
-  font-size: 15px;
+  font-size: 1rem;
   text-align: center;
 }
 
@@ -73,6 +81,10 @@ header nav div div {
   font-size: 12px;
   text-align: center;
   padding: 0px;
+}
+
+.card .card-body {
+  overflow: hidden;
 }
 
 .card:hover {
