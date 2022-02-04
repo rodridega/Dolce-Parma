@@ -119,7 +119,7 @@ function renderCarrito(){
     <tr>
       <th><img src="${producto.imagen}" width="100px"></th>
       <th>${producto.nombre}</th>
-      <th>${producto.precio}</th>
+      <th>$${producto.precio}</th>
       <th><a href="#" class="btn btn-danger" onClick="quitarProducto(${producto.date})">X</a></th>
     </tr>
     `)

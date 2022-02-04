@@ -17,6 +17,10 @@
           box-sizing: border-box;
 }
 
+body {
+  background-color: #fdedf7;
+}
+
 a {
   text-decoration: none;
 }
@@ -26,7 +30,6 @@ a:hover {
 }
 
 header nav {
-  background-color: #390164;
   font-size: 30px;
 }
 
@@ -107,10 +110,6 @@ footer {
 
 #carritoList {
   list-style: none;
-}
-
-#carritoList li {
-  margin-right: 30px;
 }
 
 #carritoList li ul {

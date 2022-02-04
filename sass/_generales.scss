@@ -2,6 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
+}
+body{
+  background-color: #fdedf7;
 }
 a {
   text-decoration: none;
@@ -11,8 +15,9 @@ a:hover {
   
 }
 header {
+  
   nav {
-    background-color: $color5;
+    
     font-size: 30px;
     div {
       div {
@@ -80,7 +85,7 @@ footer{
 #carritoList{
   list-style: none;
   li{
-    margin-right: 30px;
+    
     ul{
       max-height: 80vh;
       overflow-y: auto;
