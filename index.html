@@ -27,6 +27,45 @@
         <div class="col-3 justify-content-center">
           <img src="imagenes/image1.png" alt="logo" />
         </div>
+        <ul id="carritoList" class="m-0 p-0">
+          <li class="nav-item dropdown fs-1">
+            <a
+              class="nav-link cart"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-cart-shopping fs-1"></i>
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <div id="carrito">
+                  <table class="table" id="listaCarrito">
+                    <thead>
+                      <tr>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+                  </table>
+                  <div class="d-flex">
+                    <button
+                      class="btn btn-danger text-white m-2"
+                      id="vaciarCarrito"
+                    >
+                      Vaciar Carrito
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
         <div class="col-6 d-flex flex-column align-items-end">
           <div>
             <a class="btn btn-floating m-1" href="#!" role="button"
@@ -36,45 +75,6 @@
               ><i class="fab fa-instagram"></i
             ></a>
           </div>
-          <ul id="carritoList" class="m-0 p-0">
-            <li class="nav-item dropdown fs-1">
-              <a
-                class="nav-link cart"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i class="fa-solid fa-cart-shopping fs-1"></i>
-              </a>
-
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <div id="carrito">
-                    <table class="table" id="listaCarrito">
-                      <thead>
-                        <tr>
-                          <th scope="col">Imagen</th>
-                          <th scope="col">Nombre</th>
-                          <th scope="col">Precio</th>
-                        </tr>
-                      </thead>
-                      <tbody id="tbody"></tbody>
-                    </table>
-                    <div class="d-flex">
-                      <button
-                        class="btn btn-danger text-white m-2"
-                        id="vaciarCarrito"
-                      >
-                        Vaciar Carrito
-                      </button>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </li>
-          </ul>
         </div>
       </div>
     </header>

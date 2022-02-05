@@ -100,10 +100,21 @@ footer {
 .cart {
   position: fixed;
   z-index: 1;
+  top: 10px;
+  right: 10px;
 }
 .fa-cart-shopping{
   color: $color5
 }
 .fa-cart-shopping:hover{
   color: black
+}
+
+#tbody{
+  th{
+    font-size: 10px;
+    img{
+      width: 75%;
+    }
+  }
 }
