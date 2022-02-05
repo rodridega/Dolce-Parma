@@ -109,13 +109,18 @@ $("#vaciarCarrito").click(vaciarCarrito);
 
 //RENDERIZA EL CARRITO
 function renderCarrito() {
-  let total = 0;
+  let suma = 0;
+  let total= 0;
   const tBody = document.querySelector("#tbody");
 
   limpiarHTML(tBody);
 
   productosCarrito.forEach((producto) => {
-    total += producto.precio;
+    
+    suma += producto.precio;
+    total = suma.toFixed(2)
+    
+    
     $("#tbody").append(`
     <tr>
       <th><img src="${producto.imagen}" width="100px"></th>
