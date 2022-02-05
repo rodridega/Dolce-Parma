@@ -52,9 +52,10 @@ $("document").ready(() => {
           </div>
         </div>
         `);
-      $(`#prod-${producto.id} .agregarCarrito`).click(() =>
-        agregarProducto(producto)
-      );
+      $(`#prod-${producto.id} .agregarCarrito`).click(() =>{
+        animarCarrito()
+        agregarProducto(producto);
+      });  
       $(`#modalCard-${producto.id}`).click(() => mostrarModal(producto));
     });
   });
@@ -100,6 +101,7 @@ function agregarProducto(producto) {
 //VACIAR CARRITO
 
 function vaciarCarrito() {
+  animarCarrito()
   productosCarrito = [];
   renderCarrito();
 }
@@ -119,7 +121,7 @@ function renderCarrito() {
       <th><img src="${producto.imagen}" width="100px"></th>
       <th>${producto.nombre}</th>
       <th>$${producto.precio}</th>
-      <th><a href="#" class="btn btn-danger" onClick="quitarProducto(${producto.date})">X</a></th>
+      <th><button class="btn btn-danger" onClick="quitarProducto(${producto.date})">X</button></th>
     </tr>
     `);
   });
@@ -144,6 +146,7 @@ function limpiarHTML(elemento) {
 //QUITA PRODUCTOS DEL CARRITO SEGUN ID
 
 function quitarProducto(date) {
+  animarCarrito()
   const copiaCarrito = [...productosCarrito];
   productosCarrito = copiaCarrito.filter((prod) => date !== prod.date);
 
@@ -156,4 +159,12 @@ function sincronizarStorage() {
   localStorage.setItem("carrito", JSON.stringify(productosCarrito));
 }
 
+//ANIMA EL CARRITO AL AGREGAR UN PRODUCTO
 
+function animarCarrito(){
+  var div = $(".cart");
+  div.animate({opacity: '0.2'}, "fast");
+  div.animate({opacity: '1'}, "fast");
+  div.animate({opacity: '0.2'}, "fast");
+  div.animate({opacity: '1'}, "fast");
+}
