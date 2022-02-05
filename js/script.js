@@ -21,12 +21,14 @@ function eventListeners() {
     renderCarrito();
   });
 }
+//CONSULTA LA API
 $("document").ready(() => {
   $.ajax({
     type: "GET",
     url: "https://fakestoreapi.com/products",
     dataType: "json",
   }).done((data) => {
+    $('.spinner').hide();
     productos = data.map(
       (prod) =>
         new Producto(
@@ -37,6 +39,7 @@ $("document").ready(() => {
           prod.id
         )
     );
+    //GENERA LAS CARDS UTILIZANDO LOS DATOS DE LA API
     productos.forEach((producto) => {
       $("#cards").append(`
         <div class="col" id="modalCard-${producto.id}">
@@ -140,7 +143,7 @@ function renderCarrito() {
   sincronizarStorage();
 }
 
-//Limpiar el HTML
+//LIMPIA EL HTML 
 
 function limpiarHTML(elemento) {
   while (elemento.firstChild) {
@@ -164,7 +167,7 @@ function sincronizarStorage() {
   localStorage.setItem("carrito", JSON.stringify(productosCarrito));
 }
 
-//ANIMA EL CARRITO AL AGREGAR UN PRODUCTO
+//ANIMA EL CARRITO AL AGREGAR O ELIMINAR UN PRODUCTO
 
 function animarCarrito(){
   var div = $(".cart");
