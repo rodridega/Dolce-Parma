@@ -22,7 +22,6 @@ header {
 }
 
 .productos {
-  background-color: $color1;
   h2 {
     font-size: 30px;
     padding: 1rem;
@@ -65,7 +64,9 @@ header {
   border: none;
 }
 .sobreMi {
-  background-color: $color1;
+  background-color: $color5;
+  color: white;
+
   p {
     text-align: center;
   }
@@ -81,9 +82,7 @@ header {
     margin-bottom: 0;
   }
 }
-footer {
-  background-color: $color2;
-}
+
 #carritoList {
   list-style: none;
   li {
