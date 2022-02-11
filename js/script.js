@@ -18,6 +18,7 @@ eventListeners();
 function eventListeners() {
   $("document").ready(() => {
     productosCarrito = JSON.parse(localStorage.getItem("carrito") || []);
+
     renderCarrito();
   });
 }
@@ -28,7 +29,7 @@ $("document").ready(() => {
     url: "https://fakestoreapi.com/products",
     dataType: "json",
   }).done((data) => {
-    $('.spinner').hide();
+    $(".spinner").hide();
     productos = data.map(
       (prod) =>
         new Producto(
@@ -39,6 +40,7 @@ $("document").ready(() => {
           prod.id
         )
     );
+
     //GENERA LAS CARDS UTILIZANDO LOS DATOS DE LA API
     productos.forEach((producto) => {
       $("#cards").append(`
@@ -55,10 +57,11 @@ $("document").ready(() => {
           </div>
         </div>
         `);
-      $(`#prod-${producto.id} .agregarCarrito`).click(() =>{
-        animarCarrito()
+      $(`#prod-${producto.id} .agregarCarrito`).click(() => {
         agregarProducto(producto);
-      });  
+
+        animarCarrito();
+      });
       $(`#modalCard-${producto.id}`).click(() => mostrarModal(producto));
     });
   });
@@ -89,22 +92,39 @@ function mostrarModal(producto) {
 
 //AGREGA PRODUCTO AL CARRITO Y MODIFICA LOS BOTONES
 
-function agregarProducto(producto) {
+function agregarProducto({ nombre, precio, imagen }) {
   const prodObj = {
-    nombre: producto.nombre,
-    precio: producto.precio,
-    imagen: producto.imagen,
+    nombre: nombre,
+    precio: precio,
+    imagen: imagen,
     date: Date.now(),
+    cantidad: 1,
   };
-  productosCarrito.push(prodObj);
-
-  renderCarrito();
+  const existe = productosCarrito.some(
+    (prod) => prod.nombre === prodObj.nombre
+  );
+  if (existe) {
+    const compras = productosCarrito.map((compra) => {
+      if (compra.nombre === prodObj.nombre) {
+        compra.cantidad++;
+        compra.precio += prodObj.precio;
+        return compra;
+      } else {
+        return compra;
+      }
+    });
+    productosCarrito = [...compras];
+    renderCarrito();
+  } else {
+    productosCarrito.push(prodObj);
+    renderCarrito();
+  }
 }
 
 //VACIAR CARRITO
 
 function vaciarCarrito() {
-  animarCarrito()
+  animarCarrito();
   productosCarrito = [];
   renderCarrito();
 }
@@ -113,48 +133,39 @@ $("#vaciarCarrito").click(vaciarCarrito);
 //RENDERIZA EL CARRITO
 function renderCarrito() {
   let suma = 0;
-  let total= 0;
-  const tBody = document.querySelector("#tbody");
+  let total = 0;
 
-  limpiarHTML(tBody);
+  $("#tbody").empty();
+  comprobarCarrito();
+  productosCarrito.forEach(({ precio, imagen, nombre, date, cantidad }) => {
+    suma += precio;
+    total = suma.toFixed(2);
 
-  productosCarrito.forEach((producto) => {
-    
-    suma += producto.precio;
-    total = suma.toFixed(2)
-    
-    
     $("#tbody").append(`
     <tr>
-      <th><img src="${producto.imagen}" width="100px"></th>
-      <th>${producto.nombre}</th>
-      <th>$${producto.precio}</th>
-      <th><button class="btn btn-danger" onClick="quitarProducto(${producto.date})">X</button></th>
+      <th><img src="${imagen}" width="100px"></th>
+      <th>${nombre}</th>
+      <th>$${precio}</th>
+      <th>${cantidad}</th>
+      <th><button class="btn btn-danger" onClick="quitarProducto(${date})">X</button></th>
     </tr>
     `);
   });
-
-  $("#tbody").append(`<tr>
-       <th><p class="fs-3"> TOTAL </p></th>
-       <td colspan="2" class="text-end"><p class="fs-3"> $${total}</p></td>
-      </tr>
-   `);
+  if (total !== 0) {
+    $("#tbody").append(`<tr>
+  <th><p class="fs-3"> TOTAL </p></th>
+  <td colspan="2" class="text-end"><p class="fs-3"> $${total}</p></td>
+ </tr>
+`);
+  }
 
   sincronizarStorage();
-}
-
-//LIMPIA EL HTML 
-
-function limpiarHTML(elemento) {
-  while (elemento.firstChild) {
-    elemento.removeChild(elemento.firstChild);
-  }
 }
 
 //QUITA PRODUCTOS DEL CARRITO SEGUN ID
 
 function quitarProducto(date) {
-  animarCarrito()
+  animarCarrito();
   const copiaCarrito = [...productosCarrito];
   productosCarrito = copiaCarrito.filter((prod) => date !== prod.date);
 
@@ -169,10 +180,40 @@ function sincronizarStorage() {
 
 //ANIMA EL CARRITO AL AGREGAR O ELIMINAR UN PRODUCTO
 
-function animarCarrito(){
+function animarCarrito() {
   var div = $(".cart");
-  div.animate({opacity: '0.2'}, "fast");
-  div.animate({opacity: '1'}, "fast");
-  div.animate({opacity: '0.2'}, "fast");
-  div.animate({opacity: '1'}, "fast");
+  div.animate({ opacity: "0.2" }, "fast");
+  div.animate({ opacity: "1" }, "fast");
+  div.animate({ opacity: "0.2" }, "fast");
+  div.animate({ opacity: "1" }, "fast");
+}
+
+//ENVIA UN MENSAJE AL USUARIO CUANDO REALIZA LA COMPRA
+function compraRealizada() {
+  console.log("dsads");
+  $("#myModal").html(`
+  <img src="../imagenes/GRACIASPORTUCOMPRA.jpg" alt="modal" class="img-fluid">
+`);
+  $("#myModalFooter").html(`
+  <p class="fs-3">VUELVE CUANDO QUIERAS</p>
+`);
+  vaciarCarrito();
+}
+$("#comprar").click(compraRealizada);
+
+//COMPRUEBA SI EL CARRITO TIENE ALGO PARA CAMBIAR LA INTERFAZ
+
+function comprobarCarrito() {
+  const btnCarrito = document.getElementById("btnCarrito");
+
+  if (productosCarrito.length === 0) {
+    btnCarrito.classList.remove("d-flex");
+    $("#tbody").append(`
+    <tr >
+    <th class="fs-5 text-center bg-dark text-white" colspan="4">Elige un producto para agregarlo al carrito</th>
+    </tr>
+    `);
+  } else {
+    btnCarrito.classList.add("d-flex");
+  }
 }

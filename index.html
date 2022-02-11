@@ -49,17 +49,27 @@
                         <th scope="col">Imagen</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Precio</th>
+                        <th scope="col" id="cantidad">Cantidad</th>
                       </tr>
                     </thead>
                     <tbody id="tbody"></tbody>
                   </table>
-                  <div class="d-flex">
+                  <div class="d-flex justify-content-around" id="btnCarrito">
                     <button
                       class="btn btn-danger text-white m-2"
                       id="vaciarCarrito"
                     >
                       Vaciar Carrito
                     </button>
+                    <button
+                      class="btn btn-success text-white m-2"
+                      id="comprar"
+                      data-bs-target="#exampleModal"
+                      data-bs-toggle="modal"
+                    >
+                      Comprar
+                    </button>
+                    <img src="" alt="" srcset="" />
                   </div>
                 </div>
               </li>
@@ -68,10 +78,16 @@
         </ul>
         <div class="col-6 d-flex flex-column align-items-end">
           <div>
-            <a class="btn btn-floating m-1" href="https://www.facebook.com/DolceParma2018/" role="button"
+            <a
+              class="btn btn-floating m-1 fs-2"
+              href="https://www.facebook.com/DolceParma2018/"
+              role="button"
               ><i class="fab fa-facebook-f"></i
             ></a>
-            <a class="btn btn-floating m-1" href="https://www.instagram.com/dolceparma2018/" role="button"
+            <a
+              class="btn btn-floating m-1 fs-2"
+              href="https://www.instagram.com/dolceparma2018/"
+              role="button"
               ><i class="fab fa-instagram"></i
             ></a>
           </div>
@@ -82,7 +98,7 @@
     <main>
       <div
         id="carouselExampleIndicators"
-        class="carousel slide"
+        class="carousel slide container"
         data-bs-ride="carousel"
       >
         <div class="carousel-indicators">
@@ -110,40 +126,40 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img
-              src="imagenes/cortaantique-ga21d5da0c_1280.jpg"
+              src="imagenes/pexels-castorly-stock-3641056.jpg"
               class="d-block w-100"
               alt="..."
             />
           </div>
           <div class="carousel-item">
             <img
-              src="imagenes/sewing-kit-g5e19f3c38_1280.jpg"
+              src="imagenes/pexels-edgars-kisuro-1488463.jpg"
               class="d-block w-100"
               alt="..."
             />
           </div>
           <div class="carousel-item">
             <img
-              src="imagenes/sewing-g7918bcd82_1280corta.jpg"
+              src="imagenes/pexels-josh-sorenson-1714208.jpg"
               class="d-block w-100"
               alt="..."
             />
           </div>
         </div>
-        
       </div>
       <section class="productos">
         <h2 class="text-center fs-1">Productos</h2>
         <div class="cards">
           <div
             class="row row-cols-2 row-cols-md-4 g-4 container cards"
-            id="cards">
+            id="cards"
+          >
             <div class="spinner">
               <div class="bounce1"></div>
               <div class="bounce2"></div>
               <div class="bounce3"></div>
             </div>
-        </div>
+          </div>
         </div>
       </section>
 

@@ -146,6 +146,10 @@ header nav div div {
   width: 75%;
 }
 
+#btnCarrito {
+  display: none;
+}
+
 .spinner {
   margin: 100px auto 0;
   width: 70px;
