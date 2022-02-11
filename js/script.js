@@ -192,7 +192,7 @@ function animarCarrito() {
 function compraRealizada() {
   console.log("dsads");
   $("#myModal").html(`
-  <img src="../imagenes/GRACIASPORTUCOMPRA.jpg" alt="modal" class="img-fluid">
+  <img src="../imagenes/gracias.jpg" alt="modal" class="img-fluid">
 `);
   $("#myModalFooter").html(`
   <p class="fs-3">VUELVE CUANDO QUIERAS</p>
